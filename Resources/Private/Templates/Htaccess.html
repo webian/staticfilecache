@@ -16,8 +16,8 @@
 	RewriteCond %{ENV:REDIRECT_STATUS} ^$
 	RewriteRule .* - [F,L]
 
-	RewriteCond %<![CDATA[{TIME}]]> ><f:format.date format="YmdHis">@{expires}</f:format.date>
-	RewriteRule ^.*$ /index.php
+	RewriteCond %<f:format.raw>{</f:format.raw>TIME<f:format.raw>}</f:format.raw> ><f:format.date format="YmdHis">@{expires}</f:format.date>
+	RewriteRule ^.*$ /index.php [L]
 </IfModule>
 </f:if>
 <f:if condition="{responseHeaders}">
